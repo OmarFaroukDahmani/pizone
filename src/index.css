@@ -15,10 +15,33 @@
   -moz-osx-font-smoothing: grayscale; */
 }
 
+:root {
+  --background-color:#8ECAE6;
+  --primary:#FB8500;
+  --second:#023047;
+  --text: #219EBC;
+  --title:#FFB703;
+}
 
+[data-theme='light']{
+  --background-color:#8ECAE6;
+  --primary:#FB8500;
+  --second:#023047;
+  --text: #219EBC;
+  --title:#FFB703;
+}
+
+[data-theme='dark']{
+  --background-color: #0B1E27; 
+  --primary: #FFB703;            
+  --second: #8ECAE6;             
+  --text: #ADE8F4;             
+  --title: #FB8500; 
+}
 
 
 body {
+  background-color: var(--background-color);
   margin: 0;
   display: flex;
   place-items: center;
@@ -76,7 +99,7 @@ body {
 .Navbar_links a {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #646cff;
+  color: var(--text);
   text-decoration: none;
   padding: 5px;
   transition: 1s;
@@ -84,7 +107,7 @@ body {
   transition: filter 300ms;
 }
 .Navbar_links a:hover {
-  color: #000677;
+  color: var(--second);
   filter: drop-shadow(0 0 15px #6b007b);
 
 }
@@ -107,7 +130,7 @@ body {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #ff9549;
+  background-color: var(--primary);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -144,11 +167,13 @@ body {
 }
 
 .landing_page_text h1{
+  color: var(--title);
   font-size: 2.5rem;
 
 }
 
 .landing_page_text p{
+  color: var(--second);
   font-size: 1.2rem;
 }
 
