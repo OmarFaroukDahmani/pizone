@@ -9,8 +9,7 @@
   height: 75px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-evenly;
 }
 
 .Navbar_links ul{

@@ -1,8 +1,6 @@
-import logo from '../assets/pizone_logo.png'
-import icon from '../assets/burger_icon.svg'
 import DarkMode from './DarkMode/DarkMode' 
 import Sidebar from './Sidebar'
-import './Navbar.css'
+import '../styling/Navbar.css'
 
  export default function Navbar(){
 
