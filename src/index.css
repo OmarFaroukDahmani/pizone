@@ -1,6 +1,6 @@
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --background-color:#8ECAE6;
+  --background-color:#eee;
   --primary:#FB8500;
   --second:#023047;
   --text: #219EBC;
@@ -10,7 +10,7 @@
 }
 
 [data-theme='light']{
-  --background-color:#8ECAE6;
+  --background-color:#eee;
   --primary:#FB8500;
   --second:#023047;
   --text: #219EBC;
@@ -43,3 +43,9 @@ body {
   min-height: 100vh;
 }
 
+.pricingCard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}

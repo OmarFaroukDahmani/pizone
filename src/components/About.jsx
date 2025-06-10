@@ -7,10 +7,9 @@ export default function About(){
                 <img src={homeImage} alt="welcome_image"/>
             </div>
             <div className="about_text">
-                <h1>Welcome to PiZone !</h1>
-                <p>Welcome to <span>Pi Zone</span> – where your learning journey begins and possibilities are endless! At <span>Pi Zone</span>, we believe in the power of knowledge to transform lives. Whether you're here to boost your skills, chase your dreams, or unlock new opportunities, you're in the right place. Get ready to explore, grow, and achieve more than you ever imagined. Your future starts now— <span> let’s make it remarkable!</span></p>
+                <h1>About <span>Pi</span>Zone </h1>
+                <p><span>Pi Zone</span> is a dynamic platform dedicated to empowering individuals through knowledge and skill development. We are driven by the belief that learning has the power to transform lives, open doors to new opportunities, and shape brighter futures. At Pi Zone, users can enhance their skills, pursue personal and professional goals, and unlock their full potential. Our mission is to provide the tools, resources, and support needed to inspire growth, exploration, and achievement. The journey to a remarkable <span>future begins here.</span></p>
             </div>
-        
         </section>
     )
 }

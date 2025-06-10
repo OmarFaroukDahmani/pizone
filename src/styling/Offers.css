@@ -1,0 +1,153 @@
+.pricingCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the cards within the container */
+  gap: 20px; /* Space between the cards */
+  margin: 40px auto; /* Center the entire section and provide vertical margin */
+  padding: 0 20px; /* Add some horizontal padding to prevent cards from touching screen edges */
+  flex-wrap: wrap; /* Allows cards to wrap to the next line */
+  align-items: stretch; /* Ensures cards in a row have the same height */
+  /* min-height: calc(100vh - 80px); /* If you want pricingCard to take up most of the viewport height, subtract its own margin */
+                                  /* Consider if this is really needed or if content drives height */
+  /* Remove any fixed height that might cause overflow */
+}
+
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top within each card for consistent layout */
+  width: 280px; /* Base width for the card */
+  max-width: 100%; /* Ensure it doesn't overflow its container */
+  min-height: 60vh;
+  /* height: fit-content; is good, but for consistent height, we rely on parent's align-items: stretch */
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background-color: #fff;
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex-basis: calc(33.333% - 20px); /* For 3 columns, accounting for gap */
+  min-width: 280px; /* Ensure cards don't get too small */
+
+  /* Added for consistent height and content distribution */
+  /* REMOVE fixed min-height if you want content to dictate height */
+  /* min-height: 350px; /* Set a reasonable minimum height for cards - review this */
+  position: relative; /* Needed for positioning the button */
+  padding-bottom: 70px; /* Make space for the button at the bottom */
+}
+
+.pricing-card:hover {
+  transform: scale(1.05);
+}
+
+.pricing-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--bold);
+  margin-bottom: 10px; /* Add some space below the title */
+}
+
+.pricing-price {
+  font-size: 36px;
+  color: var(--text);
+  margin: 10px 0;
+}
+
+.per-month {
+  font-size: 16px;
+  color: #666;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0; /* Adjust this margin if it's contributing to overflow */
+  text-align: left;
+  flex-grow: 1; /* Allows the feature list to take up available space */
+}
+
+.feature-item {
+  margin: 10px 0;
+  color: #555;
+  font-size: 16px;
+}
+
+.pricing-button {
+  width: calc(100% - 40px); /* Account for card's internal padding (20px left + 20px right) */
+  padding: 10px 0;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /* Position the button at the bottom of the card */
+  position: absolute;
+  bottom: 20px; /* Matches card's padding */
+  left: 20px; /* Matches card's padding */
+  right: 20px; /* Matches card's padding */
+}
+
+.pricing-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+
+/* For screens smaller than 992px (e.g., tablets in landscape) - 2 columns */
+@media (max-width: 992px) {
+    .pricing-card {
+        flex-basis: calc(50% - 20px); /* Two cards per row */
+        min-width: 40vw; /* Allow it to shrink more if needed */
+        margin-bottom: 20px; /* Add space between rows */
+    }
+    .pricingCard{
+        flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+        flex-direction: row;
+
+    }
+}
+
+/* For screens smaller than 768px (e.g., tablets in portrait or large phones) - 1 column */
+@media (max-width: 768px) {
+    .pricing-card {
+        flex-basis: calc(100% - 20px); /* One card per row */
+        margin-bottom: 20px; /* Add margin between cards when stacked */
+        width: 40vw;
+        min-width: 30vw; /* Maintain a good minimum width */
+    }
+    .pricingCard {
+
+        flex-direction: row;
+    }
+}
+
+/* For very small screens, ensure button text wraps if needed */
+@media (max-width: 480px) {
+    .pricing-button {
+        font-size: 14px; /* Slightly smaller font for very small screens */
+        padding: 8px 0;
+    }
+    .pricing-title {
+        font-size: 20px; /* Slightly smaller title */
+    }
+    .pricing-price {
+        font-size: 30px; /* Slightly smaller price */
+    }
+    .pricing-card {
+        padding: 15px; /* Reduce card padding */
+        /* min-height: 320px; /* Adjust min height for smaller font sizes - review this */
+        padding-bottom: 60px; /* Adjust space for button */
+    }
+    .pricing-button {
+      bottom: 15px; /* Adjust button position */
+      left: 15px;
+      right: 15px;
+      width: calc(100% - 30px);
+    }
+    .pricingCard{
+        flex-direction: row;
+    }
+}

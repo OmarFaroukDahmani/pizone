@@ -2,6 +2,7 @@ import Avatar from '../assets/avatar.png'
 import '../styling/Landpage.css'
 
 export default function Landpage(){
+
     return (
         <section className="landing">
             <div className='landing_text'> 
