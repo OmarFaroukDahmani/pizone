@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar'
 import About from '../components/About'
 import Landpage from '../components/Landpage'
 import Offers from '../components/Offers'
-import Footer from '../components/Footer'
+// import Footer from '../components/Footer'
 
 
 
@@ -73,7 +73,7 @@ export default function Home(){
                 buttonText="Get Started" 
             />
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 
