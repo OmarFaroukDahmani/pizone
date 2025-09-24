@@ -3,6 +3,7 @@ import About from '../components/About'
 import Landpage from '../components/Landpage'
 import Offers from '../components/Offers'
 import Footer from '../components/Footer'
+import { UserButton } from '@clerk/clerk-react'
 
 
 

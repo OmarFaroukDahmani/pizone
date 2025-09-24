@@ -1,5 +1,6 @@
 import DarkMode from './DarkMode/DarkMode' 
 import Sidebar from './Sidebar'
+import {Link} from 'react-router-dom'
 import '../styling/Navbar.css'
 
  export default function Navbar(){
@@ -29,8 +30,12 @@ import '../styling/Navbar.css'
                 </ul>
             </nav>
             <div className="Navbar_logs">
-                <button id="log_in">Log in</button>
-                <button id="sign_in">Sign in</button>
+                <Link to='/login'>
+                    <button id="log_in">Log in</button>
+                </Link>
+                <Link to='/signup'>
+                    <button id="sign_in">Sign in</button>
+                </Link>
             </div>
             <div className='burger_menu'>
                 <Sidebar/>
