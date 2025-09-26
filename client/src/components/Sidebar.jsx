@@ -2,7 +2,7 @@ import Hamburger from "hamburger-react"
 import { useState } from "react"
 import DarkMode from "./DarkMode/DarkMode";
 import './DarkMode/DarkMode.css'
-import '../styling/Sidebar.css'
+import '../style/Sidebar.css'
 
 export default function Sidebar(){
 

@@ -1,79 +1,37 @@
 import Navbar from '../components/Navbar'
-import About from '../components/About'
-import Landpage from '../components/Landpage'
-import Offers from '../components/Offers'
 import Footer from '../components/Footer'
-import { UserButton } from '@clerk/clerk-react'
+import homeImage from '../assets/pizone_logo.png'
+import Avatar from '../assets/avatar.png'
+import '../style/Home.css'
 
 
 
 export default function Home(){
-    const features = [[
-      "Access to 5 introductory courses",
-      "Limited quizzes per course",
-      "Basic progress tracking",
-      "Community forum (read-only)",
-      "Ads displayed"
-    ],[
-      "Includes Free Plan features",
-      "Access to 30+ courses",
-      "Downloadable resources (PDFs, slides)",
-      "Certificate of Completion for each course",
-      "Community forum (post & comment)",
-      "Basic support (email only)",
-      "No ads"
-    ],
-    [
-      "Includes Starter Plan features",
-      "Access to all courses (100+)",
-      "Interactive assignments & projects",
-      "Monthly live webinars & workshops",
-      "Offline viewing mode (download videos)",
-      "Advanced progress reports",
-      "Priority email & chat support",
-      "Course creator tools (limited)"
-    ],[
-      "Includes Pro Plan features",
-      "Unlimited course creation & publishing",
-      "White-label branding (custom logo, URL)",
-      "Team/enterprise management dashboard",
-      "Dedicated account manager",
-      "API access for integrations",
-      "Customizable learning paths",
-      "Lifetime content access (even after cancellation)"
-    ]
-]
+
     return (
         <>
             <Navbar />
-            <Landpage/>
-            <About />
-            <div  className="pricingCard">
-            <Offers 
-                title="Free Plan" 
-                price="0" 
-                features={features[0]} 
-                buttonText="Get Started" 
-            />
-            <Offers 
-                title="Starter Plan" 
-                price="19" 
-                features={features[1]} 
-                buttonText="Get Started" 
-            />
-            <Offers 
-                title="Pro Plan" 
-                price="29" 
-                features={features[2]} 
-                buttonText="Get Started" 
-            />
-            <Offers 
-                title="Unlimited Plan" 
-                price="59" 
-                features={features[3]} 
-                buttonText="Get Started" 
-            />
+        <section className="landing">
+            <div className='landing_text'> 
+                <h1>Learn without limits</h1>
+                <p>Start, switch, or advance your career with more than <span>10,000 courses</span>, Professional Certificates, and degrees from <span>world-class universities and companies</span>.</p>
+                <div className='landing_buttons'>
+                    <button>Join For Free</button>
+                </div>
             </div>
+            <div className='avatar'>
+                <img src={Avatar} alt="Pi_zone avatar" />
+            </div>
+        </section>
+        <section className="about">
+            <div className="about_img">
+                <img src={homeImage} alt="welcome_image"/>
+            </div>
+            <div className="about_text">
+                <h1>About <span>Pi</span>Zone </h1>
+                <p><span>Pi Zone</span> is a dynamic platform dedicated to empowering individuals through knowledge and skill development. We are driven by the belief that learning has the power to transform lives, open doors to new opportunities, and shape brighter futures. At Pi Zone, users can enhance their skills, pursue personal and professional goals, and unlock their full potential. Our mission is to provide the tools, resources, and support needed to inspire growth, exploration, and achievement. The journey to a remarkable <span>future begins here.</span></p>
+            </div>
+        </section>
             <Footer />
         </>
     )
