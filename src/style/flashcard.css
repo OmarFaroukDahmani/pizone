@@ -1,0 +1,319 @@
+h1 {
+  color: var(--bold);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.flashcards-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.flashcards-section > p {
+  color: var(--text);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.no-cards {
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  color: var(--title);
+  font-weight: 600;
+}
+
+.flashcards-section > button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(251, 133, 0, 0.4);
+}
+
+.flashcards-section > button:hover {
+  background-color: #e57800;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(251, 133, 0, 0.6);
+}
+
+.cards-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 1rem 0;
+}
+
+.flashcard {
+  flex: 1 1 280px;
+  perspective: 1000px;
+  min-height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  background-color: transparent;
+  border-left: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.flashcard.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 15px rgba(2, 48, 71, 0.1);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.flashcard-front {
+  border-left: 5px solid var(--primary);
+  transform: rotateY(0deg);
+}
+
+.flashcard-back {
+  border-left: 5px solid var(--text);
+  transform: rotateY(180deg);
+}
+
+.flashcard h3 {
+  color: var(--bold);
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--background-color);
+  padding-bottom: 10px;
+  margin-top: 0;
+  overflow-wrap: break-word;
+}
+
+.flashcard h4 {
+  color: var(--title);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border-bottom: 2px dashed var(--background-color);
+  padding-bottom: 5px;
+}
+
+.flashcard p {
+  color: var(--second);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  overflow-wrap: break-word;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.flashcard-front p {
+  flex-grow: 1;
+}
+
+.flashcard p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+  flex-shrink: 0;
+}
+
+.delete-btn, .flip-btn {
+  flex-shrink: 0;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  align-self: center;
+}
+
+.flashcard-front .flip-btn {
+  background-color: var(--text);
+  width: 100%;
+  margin-top: auto;
+}
+
+.delete-btn {
+  background-color: #e76f51;
+  flex-grow: 1;
+}
+
+.flip-btn {
+  background-color: var(--text);
+  flex-grow: 1;
+}
+
+.flip-btn.cancel-btn {
+  background-color: var(--title);
+  color: var(--second);
+}
+
+.delete-btn:hover {
+  background-color: #d64d30;
+}
+
+.flip-btn:hover {
+  background-color: #1a7e93;
+}
+
+.flip-btn.cancel-btn:hover {
+  background-color: #e3a602;
+}
+
+.note-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 33, 75, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 15px;
+}
+
+.note-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.note-content h2 {
+  color: var(--bold);
+  margin-top: 0;
+  border-bottom: 1px solid var(--background-color);
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.note-content label {
+  color: var(--second);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.note-content input,
+.note-content textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--second);
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.note-content input:focus,
+.note-content textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-buttons button:first-child {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 3px 5px rgba(251, 133, 0, 0.4);
+}
+
+.modal-buttons button:first-child:hover {
+  background-color: #e57800;
+  transform: translateY(-1px);
+}
+
+.modal-buttons .cancel-btn {
+  background-color: var(--background-color);
+  color: var(--second);
+  border: 1px solid var(--text);
+}
+
+.modal-buttons .cancel-btn:hover {
+  background-color: #ccc;
+  border-color: var(--second);
+}
+
+.error-message {
+  background-color: #ffe0b2;
+  color: var(--second);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--primary);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .flashcards-section {
+    padding: 1rem;
+  }
+  
+  .flashcard {
+    flex: 1 1 100%;
+  }
+
+  .flashcards-section > button {
+    padding: 12px 30px;
+  }
+}
