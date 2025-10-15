@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../style/flashcard.css'
-// Removed all Firebase imports
 
-// Helper function to safely load from localStorage
+// load from localStorage
 const loadCardsFromLocalStorage = () => {
   const saved = localStorage.getItem('flashcards');
   if (saved) {
     try {
-      // Parse the JSON string from localStorage
       return JSON.parse(saved);
     } catch (e) {
       console.error("Could not parse flashcards from localStorage:", e);
@@ -18,12 +16,10 @@ const loadCardsFromLocalStorage = () => {
   return [];
 };
 
-// Card Component to handle flipping logic
-// Props changed: now accepts 'handleDelete' function instead of db/userId
+// Card Component
 const FlipCard = ({ card, handleDelete }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Simplified delete function uses the prop from the parent
   const handleDeleteClick = (e) => {
     e.stopPropagation(); 
     handleDelete(card.id);
@@ -32,7 +28,6 @@ const FlipCard = ({ card, handleDelete }) => {
   return (
     <div 
       className={`flashcard ${isFlipped ? 'is-flipped' : ''}`} 
-      // Changed to onDoubleClick to prevent accidental flips on small taps
       onDoubleClick={() => setIsFlipped(!isFlipped)} 
     >
       <div className="card-face flashcard-front">
@@ -47,7 +42,7 @@ const FlipCard = ({ card, handleDelete }) => {
       </div>
 
       <div className="card-face flashcard-back">
-        <h4>{card.title} - Details</h4>
+        <h4>{card.title}</h4>
         <p><strong>Description:</strong> {card.desc}</p>
         <p><strong>Question:</strong> {card.ques}</p>
         <div className="card-actions">
@@ -71,38 +66,35 @@ const FlipCard = ({ card, handleDelete }) => {
 
 
 export default function Flashcards() {
-  // Reverted state initialization to use localStorage and removed Firebase state
   const [cards, setCards] = useState(loadCardsFromLocalStorage);
   const [showModal, setShowModal] = useState(false);
   const [showError, setShowError] = useState(false);
   const [note, setNote] = useState({ title: '', desc: '', ques: '' });
 
-  // useEffect to save to localStorage whenever cards change
+  // Save to localStorage
   useEffect(() => {
     localStorage.setItem('flashcards', JSON.stringify(cards));
   }, [cards]);
   
-  // Removed all Firebase initialization and data fetching useEffects
 
 
   const handleNote = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
   
-  // Local state delete function
+  // Delete function
   const handleDelete = (id) => {
     const updated = cards.filter((c) => c.id !== id);
     setCards(updated);
   };
 
-  // Reverted handleCreateCard to use local state updates
   const handleCreateCard = () => {
     if (!note.title || !note.desc || !note.ques) {
       setShowError(true);
       return;
     }
     
-    // Create new card object with unique ID (timestamp)
+    // Create new card 
     const newCard = {
       id: Date.now(),
       title: note.title,
@@ -119,7 +111,6 @@ export default function Flashcards() {
   return (
     <>
     <Navbar/>
-      <nav className="navbar"><h1>Flashcard App</h1></nav>
       <section className="flashcards-section">
         <h1>Add Your Notes Here</h1>
         <p>
@@ -136,14 +127,14 @@ export default function Flashcards() {
               <FlipCard 
                 key={card.id} 
                 card={card} 
-                handleDelete={handleDelete} // Pass the local delete function
+                handleDelete={handleDelete} 
               />
             ))
           )}
         </div>
       </section>
 
-      {/* Modal / Note Card */}
+      {/* Note Card */}
       <div className="note-card" style={{ display: showModal ? 'flex' : 'none' }}>
         <div className="note-content">
           <h2>Create a Note</h2>
