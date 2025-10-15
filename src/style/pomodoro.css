@@ -1,0 +1,257 @@
+.pomodoro-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.pomodoro-section h1 {
+  color: var(--bold);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pomodoro-section p {
+  color: var(--text);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.timer-stopwatch-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.timer,
+.stopwatch,
+.pomodoro,
+.custom-timer {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(2, 48, 71, 0.1);
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.timer h3,
+.stopwatch h3,
+.pomodoro h3,
+.custom-timer h3 {
+  color: var(--bold);
+  margin-bottom: 10px;
+}
+
+.session-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.session-buttons button {
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: 1px solid var(--primary);
+  background-color: white;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.session-buttons button.active,
+.session-buttons button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.timer-display,
+.stopwatch-display {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #e57800;
+  transform: translateY(-1px);
+}
+
+.pomodoro p {
+  font-size: 1rem;
+  color: var(--text);
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .timer-stopwatch-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timer,
+  .stopwatch,
+  .pomodoro,
+  .custom-timer {
+    width: 90%;
+  }
+}
+
+.buttons-group {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #e57800;
+  transform: translateY(-1px);
+}
+
+/* Session buttons remain the same */
+.session-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.session-buttons button {
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: 1px solid var(--primary);
+  background-color: white;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.session-buttons button.active,
+.session-buttons button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* pomodoro.css additions */
+
+/* Overlay to cover the entire screen */
+.timer-notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+}
+
+/* The actual notification box */
+.timer-notification {
+    background: linear-gradient(135deg, #ffc837 0%, #ff8008 100%); /* Warm, inviting gradient */
+    color: #333;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.timer-notification h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.timer-notification p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.timer-notification button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+.timer-notification button:hover {
+    background-color: #000;
+}
+
+/* Optional: Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Style for the Ambiance button */
+.background-sound-control button {
+    margin: 20px auto;
+    padding: 10px 15px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: fit-content;
+    transition: background-color 0.2s;
+}
+
+.background-sound-control button:hover {
+    background-color: #0c7cd5;
+}
+
+/* Style for the custom input fields */
+.custom-input-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.custom-input-group input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
