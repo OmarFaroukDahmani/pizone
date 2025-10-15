@@ -9,7 +9,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { id: "0", anchor: "#about", title: "About" },
+    { id: "0", anchor: "pizone.pages.dev/#about", title: "About" },
     { id: "1", anchor: "/flashcards", title: "Flashcards" },
     { id: "2", anchor: "/promodoro-timer", title: "Pomodoro Timer" },
     { id: "3", anchor: "/to-do-list", title: "To-Do List" },
