@@ -266,7 +266,6 @@ export default function PomodoroTimer() {
         <div className="custom-timer">
           <h3>Custom Timer</h3>
           <div className="custom-input-group">
-            <label>Set Time:</label>
             <input 
               type="number" 
               placeholder="Hr" 
