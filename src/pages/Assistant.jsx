@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import { SendHorizonal } from 'lucide-react' 
+import { SendHorizonal } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 import '../style/assistant.css'
+
 
 export default function Assistant() {
   const [messages, setMessages] = useState([
@@ -39,6 +41,13 @@ export default function Assistant() {
 
   return (
     <>
+      <Helmet>
+        <title>Pizone: AI Study Assistant & Chatbot</title>
+        <meta
+          name="description"
+          content="Get instant help understanding topics, generating summaries, and creating custom study questions with the Pizone AI Assistant chatbot."
+        />
+      </Helmet>
       <Navbar />
       <section className="assistant">
         <div className="chat">

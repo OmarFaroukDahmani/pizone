@@ -5,6 +5,7 @@ import Avatar from '../assets/avatar.png'
 import '../style/Home.css'
 import { StickyNote, Timer, ListTodo, BotMessageSquare } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 export default function Home() {
   const features = [
@@ -18,7 +19,7 @@ export default function Home() {
     {
       id: "1",
       icon: Timer,
-      name: "Promodoro Timer",
+      name: "Pomodoro Timer",
       desc: "Boost focus with timed study sessions and structured breaks.",
       link: "/promodoro-timer"
     },
@@ -40,6 +41,11 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Pizone: All-in-One Study Companion, Flashcards, & Pomodoro</title>
+        <meta name="description" content="Pizone is your all-in-one study companion with Flashcards, a Pomodoro Timer, To-Do List, and an AI Assistant to make learning simpler and more effective." />
+      </Helmet>
+
       <Navbar />
 
       <section className="landing">
