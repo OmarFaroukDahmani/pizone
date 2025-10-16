@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../style/todo.css';
 import Navbar from '../components/Navbar';
 
@@ -111,7 +111,6 @@ export default function TodoApp() {
         <>
             <Navbar/>
             <div className="todo-container">
-                {/* Main page title*/}
                 <div className="page-header">
                     <h1>To-Do List 📝</h1>
                     <p>Keep track of your tasks throughout the day.</p>
@@ -120,7 +119,6 @@ export default function TodoApp() {
                 <div className="todo-box">
                     <h3 className="todo-title">Task List</h3>
                     
-                    {/* Todo Input */}
                     <form onSubmit={addTodo} className="todo-input-form">
                         <button 
                             type="button" 
@@ -138,7 +136,6 @@ export default function TodoApp() {
                         />
                     </form>
 
-                    {/* Todo List */}
                     {filteredTodos.length > 0 ? (
                         <ul className="todo-list">
                             {filteredTodos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
@@ -149,7 +146,6 @@ export default function TodoApp() {
                         </div>
                     )}
                     
-                    {/* Footer / Controls */}
                     <div className="todo-footer">
                         <div className="items-left">{activeCount} items left</div>
                         

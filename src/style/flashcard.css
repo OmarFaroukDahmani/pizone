@@ -1,3 +1,4 @@
+
 h1 {
   color: var(--bold);
   font-size: 2.5rem;
@@ -36,13 +37,13 @@ h1 {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(251, 133, 0, 0.4);
+  box-shadow: 0 4px 6px rgba(255, 140, 50, 0.4); 
 }
 
 .flashcards-section > button:hover {
-  background-color: #e57800;
+  background-color: #e57800; 
   transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(251, 133, 0, 0.6);
+  box-shadow: 0 6px 10px rgba(255, 140, 50, 0.6); 
 }
 
 .cards-container {
@@ -55,7 +56,7 @@ h1 {
 }
 
 .flashcard {
-  min-width: 22vw;
+  min-width: 25vw;
   min-height: 250px;
   position: relative;
   perspective: 1000px;
@@ -78,8 +79,8 @@ h1 {
   padding: 20px;
   border-radius: 12px;
   backface-visibility: hidden;
-  box-shadow: 0 4px 15px rgba(2, 48, 71, 0.1);
-  background-color: white;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.1); 
+  background-color: var(--card-bg); 
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -114,6 +115,7 @@ h1 {
   margin-bottom: 10px;
   border-bottom: 2px dashed var(--background-color);
   padding-bottom: 5px;
+  margin-top: 0;
 }
 
 .flashcard p {
@@ -123,7 +125,7 @@ h1 {
   overflow-wrap: break-word;
   word-break: break-all;
   flex-grow: 1;
-  text-align: left;
+  text-align: center;
 }
 
 .flashcard p strong {
@@ -139,7 +141,7 @@ h1 {
   flex-shrink: 0;
 }
 
-.delete-btn, .flip-btn {
+.del-btn, .flip-btn {
   flex-shrink: 0;
   color: white;
   border: none;
@@ -157,8 +159,8 @@ h1 {
   margin-top: auto;
 }
 
-.delete-btn {
-  background-color: #e76f51;
+.del-btn {
+  background-color: #e76f51; 
   flex-grow: 1;
 }
 
@@ -169,19 +171,19 @@ h1 {
 
 .flip-btn.cancel-btn {
   background-color: var(--title);
-  color: var(--second);
+  color: white; 
 }
 
-.delete-btn:hover {
-  background-color: #d64d30;
+.del-btn:hover {
+  background-color: #d64d30; 
 }
 
 .flip-btn:hover {
-  background-color: #1a7e93;
+  background-color: #1a7e93; 
 }
 
 .flip-btn.cancel-btn:hover {
-  background-color: #e3a602;
+  background-color: #1c52b5; 
 }
 
 .note-card {
@@ -190,7 +192,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(26, 33, 75, 0.7);
+  background-color: rgba(15, 23, 42, 0.7); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -199,7 +201,7 @@ h1 {
 }
 
 .note-content {
-  background-color: white;
+  background-color: var(--card-bg); 
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -240,13 +242,14 @@ h1 {
 .note-content textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--background-color); 
   border-radius: 6px;
   font-size: 1rem;
   color: var(--second);
   resize: vertical;
   box-sizing: border-box;
   transition: border-color 0.3s;
+  background-color: var(--card-bg); 
 }
 
 .note-content input:focus,
@@ -275,11 +278,11 @@ h1 {
 .modal-buttons button:first-child {
   background-color: var(--primary);
   color: white;
-  box-shadow: 0 3px 5px rgba(251, 133, 0, 0.4);
+  box-shadow: 0 3px 5px rgba(255, 140, 50, 0.4); 
 }
 
 .modal-buttons button:first-child:hover {
-  background-color: #e57800;
+  background-color: #e57800; 
   transform: translateY(-1px);
 }
 
@@ -290,12 +293,12 @@ h1 {
 }
 
 .modal-buttons .cancel-btn:hover {
-  background-color: #ccc;
+  background-color: #E2E8F0; 
   border-color: var(--second);
 }
 
 .error-message {
-  background-color: #ffe0b2;
+  background-color: #ffe0b2; 
   color: var(--second);
   padding: 10px;
   border-radius: 8px;

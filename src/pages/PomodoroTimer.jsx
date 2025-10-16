@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import '../style/pomodoro.css'
 import Navbar from "../components/Navbar";
-// NOTE: You must update the paths for your audio files.
-// "/aot.mp3" is for the end-of-timer sound.
-// "/rainy.mp3" is for the ambiance sound.
+
 
 const SESSION_TYPES = [
   { name: "Short Focus", minutes: 25 },
@@ -12,7 +10,6 @@ const SESSION_TYPES = [
 ];
 
 export default function PomodoroTimer() {
-  // State initialization with localStorage lookup
   const [sessionIndex, setSessionIndex] = useState(
     () => parseInt(localStorage.getItem("sessionIndex")) || 0
   );
@@ -23,7 +20,6 @@ export default function PomodoroTimer() {
     () => JSON.parse(localStorage.getItem("isRunning")) || false
   );
 
-  // Custom Timer State (NOW WITH HOURS)
   const [customInputHours, setCustomInputHours] = useState(
     () => parseInt(localStorage.getItem("customInputHours")) || 0
   );
@@ -40,7 +36,6 @@ export default function PomodoroTimer() {
     () => JSON.parse(localStorage.getItem("customRunning")) || false
   );
 
-  // Stopwatch State
   const [stopwatchTime, setStopwatchTime] = useState(
     () => parseInt(localStorage.getItem("stopwatchTime")) || 0
   );
@@ -48,25 +43,22 @@ export default function PomodoroTimer() {
     () => JSON.parse(localStorage.getItem("stopwatchRunning")) || false
   );
 
-  // Sound and Notification State
   const [isNotifying, setIsNotifying] = useState(false);
   const [isBackgroundPlaying, setIsBackgroundPlaying] = useState(
     () => JSON.parse(localStorage.getItem("isBackgroundPlaying")) || false
   );
 
-  // Refs for intervals and audio
   const timerRef = useRef(null);
   const customRef = useRef(null);
   const stopwatchRef = useRef(null);
-  const alarmAudioRef = useRef(null); // Ref for end-of-timer sound
-  const backgroundAudioRef = useRef(null); // Ref for ambiance sound
+  const alarmAudioRef = useRef(null); 
+  const backgroundAudioRef = useRef(null); 
 
-  // 1. Local Storage Effect (Updated with customInputHours)
+
   useEffect(() => {
     localStorage.setItem("sessionIndex", sessionIndex);
     localStorage.setItem("timeLeft", timeLeft);
     localStorage.setItem("isRunning", isRunning);
-    // Updated custom timer storage
     localStorage.setItem("customInputHours", customInputHours);
     localStorage.setItem("customInputMinutes", customInputMinutes);
     localStorage.setItem("customInputSeconds", customInputSeconds);
@@ -81,25 +73,21 @@ export default function PomodoroTimer() {
     stopwatchTime, stopwatchRunning, isBackgroundPlaying
   ]);
 
-  // 2. Background Audio Control Effect (NEW LOGIC)
   useEffect(() => {
     const audio = backgroundAudioRef.current;
     if (audio) {
-      audio.loop = true; // Loop the background sound
+      audio.loop = true; 
       
-      // Determine if the ambiance SHOULD be playing based on timer status
       const shouldPlay = isBackgroundPlaying && (isRunning || customRunning);
       
       if (shouldPlay) {
         audio.play().catch(e => console.error("Error playing background audio:", e));
       } else {
-        // Stop if paused, finished, or manually toggled off
         audio.pause();
       }
     }
   }, [isBackgroundPlaying, isRunning, customRunning]);
   
-  // 3. Pomodoro Timer Logic (with Notification)
   useEffect(() => {
     if (isRunning) {
       timerRef.current = setInterval(() => {
@@ -107,9 +95,7 @@ export default function PomodoroTimer() {
           if (prev <= 1) {
             clearInterval(timerRef.current);
             setIsRunning(false);
-            // Ambiance stops due to isRunning becoming false
             
-            // Trigger Notification
             setIsNotifying(true);
             alarmAudioRef.current.play().catch(e => console.error("Error playing alarm:", e));
             return 0;
@@ -123,7 +109,6 @@ export default function PomodoroTimer() {
     return () => clearInterval(timerRef.current);
   }, [isRunning]);
 
-  // 4. Custom Timer Logic (with Notification)
   useEffect(() => {
     if (customRunning && customTime > 0) {
       customRef.current = setInterval(() => {
@@ -131,9 +116,7 @@ export default function PomodoroTimer() {
           if (prev <= 1) {
             clearInterval(customRef.current);
             setCustomRunning(false);
-            // Ambiance stops due to customRunning becoming false
             
-            // Trigger Notification
             setIsNotifying(true);
             alarmAudioRef.current.play().catch(e => console.error("Error playing alarm:", e));
             return 0;
@@ -147,7 +130,6 @@ export default function PomodoroTimer() {
     return () => clearInterval(customRef.current);
   }, [customRunning, customTime]);
 
-  // Stopwatch Logic (Unchanged)
   useEffect(() => {
     if (stopwatchRunning) {
       stopwatchRef.current = setInterval(() => {
@@ -159,13 +141,11 @@ export default function PomodoroTimer() {
     return () => clearInterval(stopwatchRef.current);
   }, [stopwatchRunning]);
 
-  // Time Formatting Utility (Unchanged)
   const formatTime = seconds => {
     const h = Math.floor(seconds / 3600).toString().padStart(2, "0");
     const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, "0");
     const s = (seconds % 60).toString().padStart(2, "0");
     
-    // Display hours if there are any
     return seconds >= 3600 ? `${h}:${m}:${s}` : `${m}:${s}`;
   };
 
@@ -175,22 +155,18 @@ export default function PomodoroTimer() {
     setIsRunning(false);
   };
 
-  // NEW: Handler for setting custom time from new inputs (NOW WITH HOURS)
   const setCustomTimeFromInputs = () => {
-    // Hours * 3600 + Minutes * 60 + Seconds
     const totalSeconds = (customInputHours * 3600) + (customInputMinutes * 60) + customInputSeconds;
     setCustomTime(totalSeconds);
     setCustomRunning(false);
   };
   
-  // NEW: Notification close handler
   const stopAlarmAndCloseNotification = () => {
     alarmAudioRef.current.pause();
-    alarmAudioRef.current.currentTime = 0; // Rewind the alarm
+    alarmAudioRef.current.currentTime = 0;
     setIsNotifying(false);
   };
 
-  // Reset Handlers (Custom timer reset now clears input fields)
   const resetPomodoro = () => {
     setTimeLeft(SESSION_TYPES[sessionIndex].minutes * 60);
     setIsRunning(false);
@@ -204,28 +180,24 @@ export default function PomodoroTimer() {
   const resetCustom = () => {
     setCustomTime(0);
     setCustomRunning(false);
-    setCustomInputHours(0);   // Clear input hours
-    setCustomInputMinutes(0); // Clear input minutes
-    setCustomInputSeconds(0); // Clear input seconds
+    setCustomInputHours(0);   
+    setCustomInputMinutes(0); 
+    setCustomInputSeconds(0); 
   };
   
-  // Toggle background sound (only sets the user's preference)
   const toggleBackgroundSound = () => {
     setIsBackgroundPlaying(prev => !prev);
   }
 
-  // Determine if Custom Timer can start
   const canStartCustom = customTime > 0 || customInputHours > 0 || customInputMinutes > 0 || customInputSeconds > 0;
 
   return (
     <>
     <Navbar/>
     <section className="pomodoro-section">
-      {/* 🎵 Hidden Audio Elements */}
       <audio ref={alarmAudioRef} src="/aot.mp3" preload="auto" /> 
       <audio ref={backgroundAudioRef} src="/rainy.mp3" preload="auto" />
       
-      {/* Timer Finished Notification */}
       {isNotifying && (
         <div className="timer-notification-overlay">
           <div className="timer-notification">
@@ -239,25 +211,20 @@ export default function PomodoroTimer() {
       <h1>Study With Pomodoro 🍅</h1>
       <p>Lock on with the best way to study 25 to 45 min per session</p>
 
-      {/* Background Sound Button */}
       <div className="background-sound-control">
         <button 
           onClick={toggleBackgroundSound} 
-          // Disable toggle button if either timer is running, to show background is linked
           disabled={isRunning || customRunning}
         >
           {isBackgroundPlaying ? '🔊 Stop Ambiance' : '🔇 Play Ambiance'}
-          {/* Add a hint to the user */}
           {(!isRunning && !customRunning && isBackgroundPlaying) && <small> (Starts with Timer)</small>}
         </button>
-        {/* Helper text when a timer is running */}
         {(isRunning || customRunning) && (
             <p className="sound-status-msg">Ambiance is linked to the active timer.</p>
         )}
       </div>
 
       <div className="timer-stopwatch-container">
-        {/* Pomodoro Timer */}
         <div className="timer">
           <h3>Pomodoro Timer</h3>
           <div className="session-buttons">
@@ -282,7 +249,6 @@ export default function PomodoroTimer() {
           </div>
         </div>
 
-        {/* Stopwatch */}
         <div className="stopwatch">
           <h3>Stopwatch</h3>
           <div className="stopwatch-display">{formatTime(stopwatchTime)}</div>
@@ -297,7 +263,6 @@ export default function PomodoroTimer() {
         </div>
 
 
-        {/* Custom Timer (Enhanced with Hours) */}
         <div className="custom-timer">
           <h3>Custom Timer</h3>
           <div className="custom-input-group">
@@ -308,7 +273,7 @@ export default function PomodoroTimer() {
               min="0" 
               value={customInputHours}
               onChange={(e) => setCustomInputHours(parseInt(e.target.value) || 0)} 
-              onBlur={setCustomTimeFromInputs} // Set time when done typing
+              onBlur={setCustomTimeFromInputs} 
             />
             <input 
               type="number" 
@@ -316,7 +281,7 @@ export default function PomodoroTimer() {
               min="0" 
               value={customInputMinutes}
               onChange={(e) => setCustomInputMinutes(parseInt(e.target.value) || 0)} 
-              onBlur={setCustomTimeFromInputs} // Set time when done typing
+              onBlur={setCustomTimeFromInputs} 
             />
             <input 
               type="number" 
@@ -325,7 +290,7 @@ export default function PomodoroTimer() {
               max="59" 
               value={customInputSeconds}
               onChange={(e) => setCustomInputSeconds(parseInt(e.target.value) || 0)} 
-              onBlur={setCustomTimeFromInputs} // Set time when done typing
+              onBlur={setCustomTimeFromInputs} 
             />
           </div>
           <div className="timer-display">{formatTime(customTime)}</div>
@@ -333,7 +298,7 @@ export default function PomodoroTimer() {
             {!customRunning ? (
               <button 
                 onClick={() => {
-                  setCustomTimeFromInputs(); // Ensure time is set before starting
+                  setCustomTimeFromInputs(); 
                   if (canStartCustom) setCustomRunning(true);
                 }}
                 disabled={!canStartCustom}

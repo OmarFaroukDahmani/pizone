@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../style/flashcard.css'
 
-// load from localStorage
 const loadCardsFromLocalStorage = () => {
   const saved = localStorage.getItem('flashcards');
   if (saved) {
@@ -16,7 +15,6 @@ const loadCardsFromLocalStorage = () => {
   return [];
 };
 
-// Card Component
 const FlipCard = ({ card, handleDelete }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -32,7 +30,7 @@ const FlipCard = ({ card, handleDelete }) => {
     >
       <div className="card-face flashcard-front">
         <h3>{card.title}</h3>
-        <p><strong>Question:</strong> {card.ques}</p>
+        <p><strong>Question:</strong><br /> {card.ques}</p>
         <button 
           className="flip-btn" 
           onClick={(e) => { e.stopPropagation(); setIsFlipped(true); }}
@@ -43,17 +41,17 @@ const FlipCard = ({ card, handleDelete }) => {
 
       <div className="card-face flashcard-back">
         <h4>{card.title}</h4>
-        <p><strong>Description:</strong> {card.desc}</p>
-        <p><strong>Question:</strong> {card.ques}</p>
+        <p><strong>Description:</strong> <br />{card.desc}</p>
+        <p><strong>Question:</strong><br /> {card.ques}</p>
         <div className="card-actions">
           <button 
             className="flip-btn cancel-btn" 
             onClick={(e) => { e.stopPropagation(); setIsFlipped(false); }}
           >
-            Back to Question
+            Back
           </button>
           <button
-            className="delete-btn"
+            className="del-btn"
             onClick={handleDeleteClick}
           >
             Delete
@@ -71,7 +69,6 @@ export default function Flashcards() {
   const [showError, setShowError] = useState(false);
   const [note, setNote] = useState({ title: '', desc: '', ques: '' });
 
-  // Save to localStorage
   useEffect(() => {
     localStorage.setItem('flashcards', JSON.stringify(cards));
   }, [cards]);
@@ -82,7 +79,6 @@ export default function Flashcards() {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
   
-  // Delete function
   const handleDelete = (id) => {
     const updated = cards.filter((c) => c.id !== id);
     setCards(updated);
@@ -94,7 +90,6 @@ export default function Flashcards() {
       return;
     }
     
-    // Create new card 
     const newCard = {
       id: Date.now(),
       title: note.title,
@@ -134,7 +129,6 @@ export default function Flashcards() {
         </div>
       </section>
 
-      {/* Note Card */}
       <div className="note-card" style={{ display: showModal ? 'flex' : 'none' }}>
         <div className="note-content">
           <h2>Create a Note</h2>

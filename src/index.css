@@ -1,34 +1,47 @@
 :root {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --background-color:#eee;
-  --primary:#FB8500;
-  --second:#023047;
-  --text: #219EBC;
-  --bold:#1a214b;
-  --title:#FFB703;
-  --filter-color:#6b007b;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --background-color: #F8FAFC; 
+  --card-bg: #FFFFFF; 
+  --primary: #FF8C32; 
+  --second: #1E3A8A;  
+  --text: #334155;    
+  --bold: #0F172A;    
+  --title: #2563EB;  
+  --filter-color: #FFB703;
+  --shadow: rgba(0, 0, 0, 0.08);
 }
+
+
+
 
 [data-theme='light']{
-  --background-color:#eee;
-  --primary:#FB8500;
-  --second:#023047;
-  --text: #219EBC;
-  --bold:#1a214b;
-  --title:#FFB703;
-  --filter-color:#6b007b;
+  --background-color: #F8FAFC; 
+  --card-bg: #FFFFFF; 
+  --primary: #FF8C32; 
+  --second: #1E3A8A;  
+  --text: #334155;    
+  --bold: #0F172A;    
+  --title: #2563EB;  
+  --filter-color: #FFB703;
+  --shadow: rgba(0, 0, 0, 0.08);
+
 
 }
 
-[data-theme='dark']{
-  --background-color: #0B1E27; 
-  --primary: #FFB703;            
-  --second: #8ECAE6;             
-  --text: #ADE8F4;     
-  --bold:#0026ff;        
-  --title: #FB8500;
-  --filter-color:#00ffff; 
+[data-theme='dark'] {
+  --background-color: #0F172A;
+  --card-bg: #1E293B;
+  --primary: #FF8C32;
+  --second: #60A5FA;
+  --text: #E2E8F0;
+  --bold: #FFFFFF;
+  --title: #FFB703;
+  --filter-color: #00CFFF;
+  --shadow: rgba(255, 255, 255, 0.05);
 }
+
+
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -41,11 +54,4 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-.pricingCard{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
 }

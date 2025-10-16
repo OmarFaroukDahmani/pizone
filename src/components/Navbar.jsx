@@ -9,7 +9,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { id: "0", anchor: "#about", title: "About" },
     { id: "1", anchor: "/flashcards", title: "Flashcards" },
     { id: "2", anchor: "/promodoro-timer", title: "Pomodoro Timer" },
     { id: "3", anchor: "/to-do-list", title: "To-Do List" },
@@ -25,7 +24,6 @@ export default function Navbar() {
 
   return (
     <div className="Navbar">
-      {/* Logo */}
       <div className="Navbar_logo">
         <h2>
           <a href="/">
@@ -34,12 +32,10 @@ export default function Navbar() {
         </h2>
       </div>
 
-      {/* Desktop Navigation */}
       <nav className="Navbar_links">
         <ul>{mylinks}</ul>
       </nav>
 
-      {/* Burger Menu for Mobile */}
       <div className="burger_menu">
         <div className="burger_icon">
           <Hamburger
@@ -60,7 +56,6 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* Dark Mode Toggle for Desktop */}
       <div className="mode">
         <DarkMode />
       </div>

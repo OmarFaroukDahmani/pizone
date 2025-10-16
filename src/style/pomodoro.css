@@ -1,12 +1,6 @@
-
-
-/* Base Section */
 .pomodoro-section {
-  max-width: 900px;
   margin: 2rem auto;
   padding: 1.5rem;
-  text-align: center;
-  background-color: var(--background-color);
 }
 
 .pomodoro-section h1 {
@@ -34,16 +28,15 @@
 .stopwatch,
 .pomodoro,
 .custom-timer {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(2, 48, 71, 0.1);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.08);
   flex: 1 1 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .timer:hover,
@@ -51,7 +44,7 @@
 .pomodoro:hover,
 .custom-timer:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(2, 48, 71, 0.15);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
 }
 
 .timer h3,
@@ -62,7 +55,6 @@
   margin-bottom: 10px;
 }
 
-/* Session Buttons */
 .session-buttons {
   display: flex;
   gap: 10px;
@@ -74,32 +66,35 @@
 .session-buttons button {
   padding: 8px 15px;
   border-radius: 6px;
-  border: 1px solid var(--primary);
-  background-color: white;
+  border: 2px solid var(--primary);
+  background-color: transparent;
   color: var(--primary);
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .session-buttons button.active,
 .session-buttons button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #fff;
+  transform: scale(1.05);
 }
 
-/* Displays */
+
 .timer-display,
 .stopwatch-display {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--second);
+  background: linear-gradient(90deg, var(--primary), var(--title));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
 }
 
-/* Buttons */
 button {
-  padding: 8px 15px;
+  padding: 10px 18px;
   border: none;
   border-radius: 8px;
   font-weight: 700;
@@ -110,18 +105,16 @@ button {
 }
 
 button:hover {
-  background-color: var(--title);
+  background-color: var(--second);
   transform: translateY(-1px);
 }
 
-/* Pomodoro Description */
 .pomodoro p {
   font-size: 1rem;
   color: var(--text);
   margin-top: 10px;
 }
 
-/* Buttons Group */
 .buttons-group {
   display: flex;
   gap: 10px;
@@ -129,29 +122,27 @@ button:hover {
   justify-content: center;
 }
 
-/* Notification Overlay */
 .timer-notification-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(15, 23, 42, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-/* Notification Box */
 .timer-notification {
-  background: linear-gradient(135deg, var(--title) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--second) 0%, var(--primary) 100%);
   color: #fff;
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   text-align: center;
-  max-width: 400px;
+  max-width: 420px;
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -167,44 +158,38 @@ button:hover {
 }
 
 .timer-notification button {
-  background-color: var(--second);
-  color: white;
+  background-color: var(--title);
+  color: var(--bold);
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1em;
-  transition: background-color 0.2s;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .timer-notification button:hover {
-  background-color: #000;
+  background-color: #fff;
+  color: var(--second);
 }
 
-/* Fade In Animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Ambiance Button */
 .background-sound-control button {
   margin: 20px auto;
   padding: 10px 15px;
   background-color: var(--text);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   display: block;
   width: fit-content;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .background-sound-control button:hover {
   background-color: var(--second);
 }
 
-/* Custom Input */
 .custom-input-group {
   display: flex;
   gap: 10px;
@@ -214,19 +199,25 @@ button:hover {
 }
 
 .custom-input-group input {
-  width: 60px;
-  padding: 5px;
+  width: 70px;
+  padding: 6px;
   text-align: center;
   font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid var(--text);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
-/* --------------------------- */
-/*      RESPONSIVENESS        */
-/* --------------------------- */
+.custom-input-group input:focus {
+  border-color: var(--primary);
+}
 
-/* Tablets */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 @media (max-width: 900px) {
   .pomodoro-section h1 {
     font-size: 2rem;
@@ -240,7 +231,6 @@ button:hover {
   }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .timer-stopwatch-container {
     flex-direction: column;
@@ -268,7 +258,6 @@ button:hover {
   }
 }
 
-/* Small Mobile */
 @media (max-width: 400px) {
   .pomodoro-section {
     padding: 1rem;
